@@ -16,9 +16,9 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LinearFragment extends Fragment implements interfaceImage {
+public class LinearFragment extends Fragment implements IList {
 
-    private AdapterImage mAdapterImage;
+    private ImageAdapter mAdapterImage;
     private ArrayList<Item> mItemArrayList;
     private RecyclerView mRecyclerView;
 
@@ -61,9 +61,9 @@ public class LinearFragment extends Fragment implements interfaceImage {
         final RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapterImage = new AdapterImage(mRecyclerView, getActivity(), this, mItemArrayList, manager);
+        mAdapterImage = new ImageAdapter(mRecyclerView, getActivity(), this, mItemArrayList, manager);
         mRecyclerView.setAdapter(mAdapterImage);
-        mAdapterImage.setLoadMore(new AdapterImage.ILoadMore() {
+        mAdapterImage.setLoadMore(new ImageAdapter.ILoadMore() {
             @Override
             public void onLoadMore() {
                 if (mItemArrayList.size() <= 100) {

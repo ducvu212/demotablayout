@@ -12,9 +12,9 @@ import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
-public class AdapterImage extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements interfaceImage {
+public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements IList {
 
-    private interfaceImage mInterfaceImage;
+    private IList mInterfaceImage;
     private ArrayList<Item> mItems;
     private final int VIEW_TYPE_ITEM = 0, VIEW_TYPE_LOADING = 1;
     private ILoadMore mLoadMore;
@@ -24,7 +24,7 @@ public class AdapterImage extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private int mTotalItemCount;
     private Activity mActivity;
 
-    public AdapterImage(RecyclerView recyclerView, Activity activity, interfaceImage interfaceImage
+    public ImageAdapter(RecyclerView recyclerView, Activity activity, IList interfaceImage
             , ArrayList<Item> mListImages, final RecyclerView.LayoutManager manager) {
         mInterfaceImage = interfaceImage;
         mItems = mListImages;
@@ -40,7 +40,6 @@ public class AdapterImage extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     mIsLoading = true;
                 }
                 super.onScrolled(recyclerView, dx, dy);
-
             }
         });
     }

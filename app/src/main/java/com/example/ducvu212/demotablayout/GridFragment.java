@@ -16,9 +16,9 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GridFragment extends Fragment implements interfaceImage {
+public class GridFragment extends Fragment implements IList {
 
-    private AdapterImage mAdapterImage;
+    private ImageAdapter mAdapterImage;
     private ArrayList<Item> mItemArrayList;
     private RecyclerView mRecyclerView;
 
@@ -48,11 +48,11 @@ public class GridFragment extends Fragment implements interfaceImage {
     private void initComponents() {
         GridLayoutManager gridLayoutManager =  new GridLayoutManager(getContext(), 2);
         mRecyclerView.setLayoutManager(gridLayoutManager);
-        mAdapterImage = new AdapterImage(mRecyclerView, getActivity(),this, mItemArrayList, gridLayoutManager);
+        mAdapterImage = new ImageAdapter(mRecyclerView, getActivity(),this, mItemArrayList, gridLayoutManager);
         mRecyclerView.setAdapter(mAdapterImage);
         mRecyclerView.addItemDecoration(new ItemOffsetDecoration(10));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapterImage.setLoadMore(new AdapterImage.ILoadMore() {
+        mAdapterImage.setLoadMore(new ImageAdapter.ILoadMore() {
             @Override
             public void onLoadMore() {
                 if (mItemArrayList.size() <= 100) {
